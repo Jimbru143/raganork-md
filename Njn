@@ -1,0 +1,33 @@
+const {
+
+	forwardOrBroadCast,
+	
+	bot,
+	
+	parsedJid,
+	
+	getBuffer,
+	
+} = require('../lib/')
+
+bot(
+	{
+		pattern: 'njn?(.*)',
+		
+		fromMe: true,
+		
+		desc: 'mention me',
+		
+		type: 'misc',
+		
+	},async (message, match) => {
+
+    await message.sendMessage('@'+
+
+        message.client.user.jid.split("@")[0],
+
+        { contextInfo: { mentionedJid: [message.client.user.jid] } }
+
+      )
+
+    })
